@@ -3,7 +3,7 @@ pipeline{
   stages{
     stage('pull the image'){
       steps{
-           sh 'sh 'docker pull nginx'
+          sh 'docker pull nginx'
       }
     }
     stage('run the container'){
