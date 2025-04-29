@@ -1,16 +1,14 @@
 pipeline{
   agent any
   stages{
-    stage('print info'){
+    stage('pull the image'){
       steps{
-        sh """
-        echo "${env.JOB_NAME}"
-        echo "${env.BUILD_ID}"
-        pwd
-        whoami
-        uptime
-        echo "${env.HOSTNAME}"
-        """
+           sh 'docker pull ngnix'
+      }
+    }
+    stage('run the container'){
+      steps{
+        sh 'docker run -it -d --name app -p 80:80 ngnix'
       }
     }
   }
