@@ -1,16 +1,18 @@
 pipeline{
     agent any
+    tools{
+        maven 'maven'
+    }
    stages{
-       stage('pull the image'){
+       stage('pull src'){
            steps{
-               sh ' docker pull nginx'
+              git branch:'main', url:'https://github.com/Su-has-21/webpage.git'
            }
        }
-       stage("run the container"){
+       stage("prep build"){
            steps{
                sh '''
-               docker rm -f app
-                docker run -it -d --name app -p 80:80 nginx
+              mvn clean package
                '''
        }
      }
