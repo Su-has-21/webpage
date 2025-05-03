@@ -12,7 +12,7 @@ pipeline{
        stage("prep build"){
            steps{
                sh '''
-                  mvn -X clean deploy -s Settings.xml
+                  mvn clean deploy -s Settings.xml
                '''
        }
      }
