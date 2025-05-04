@@ -4,15 +4,15 @@ pipeline{
         maven 'maven'
     }
    stages{
-       stage('pull src'){
+       stage('Pull src'){
            steps{
               git branch:'main', url:'https://github.com/Su-has-21/webpage.git'
            }
        }
-       stage("prep build"){
+       stage("Prep build"){
            steps{
                sh '''
-                  mvn clean deploy -s Settings.xml
+                  mvn clean package
                '''
        }
      }
